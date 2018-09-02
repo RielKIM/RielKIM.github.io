@@ -3,10 +3,10 @@ layout: post
 title:  "TESTING"
 date:   2018-03-15
 excerpt: "TESTING EXCERPT"
-tag:
-- test
+tags: [test]
 comments: true
 ---
+
 <iframe width="560" height="315" src="//www.youtube.com/embed/SU3kYxJmWuQ" frameborder="0"> </iframe>
 
 Video embeds are responsive and scale with the width of the main content block with the help of [FitVids](http://fitvidsjs.com/).
