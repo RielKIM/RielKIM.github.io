@@ -123,6 +123,12 @@ img {
 	height: 150px;
 	width: 150px;
 }
+.img-bigcircle {
+	border-radius: 50%;
+	border: 3px solid $white;
+	height: 400px;
+	width: 400px;
+}
 .author-photo {
     background-color: $white;
 }
