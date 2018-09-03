@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: About me
 tags: [about]
 date: 2018-09-03
 comments: false
