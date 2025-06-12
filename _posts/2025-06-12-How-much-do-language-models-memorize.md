@@ -1,8 +1,11 @@
-# **How much do language models memorize?** 
 ---
-URL : [How much do language models memorize?](https://arxiv.org/abs/2505.24832)
-
-### AI는 베끼는 걸까, 배우는 걸까? AI의 '암기력' 비밀 파헤치기!
+layout: post
+title: "How much do language models memorize?"
+date: 2025-06-12
+excerpt: "AI는 베끼는 걸까, 배우는 걸까? AI의 '암기력' 비밀 파헤치기!"
+tags: ["GPT 모델 용량(GPT Model Capacity)","의도하지 않은 기억(Unintended Memorization)","일반화(Generalization)","멤버십 추론(Membership Inference)","Kolmogorov 복잡도(Kolmogorov Complexity)"]
+comments: true
+---
 
 안녕하세요! 요즘 우리 삶 곳곳에서 활약하는 인공지능(AI), 정말 신기하지 않으신가요? 문득 이런 궁금증이 생깁니다. "AI는 정말 우리가 하는 말을 이해하는 걸까, 아니면 그냥 인터넷에 있는 수많은 글을 통째로 외워서 그럴듯하게 앵무새처럼 따라 하는 걸까?"
 
@@ -17,7 +20,7 @@ URL : [How much do language models memorize?](https://arxiv.org/abs/2505.24832)
 이런 정보는 이해할 수 없으니, 오직 암기력에만 의존해야 합니다. 결과는 어땠을까요?
 
 <figure>
-    <a href="2025-06-12-How-much-do-language-models-memorize/image.svg"><img src="2025-06-12-How-much-do-language-models-memorize/image.svg"></a>
+    <a href="/2025-06-12-How-much-do-language-models-memorize/image.svg"><img src="/2025-06-12-How-much-do-language-models-memorize/image.svg"></a>
 </figure>
 
 위 그래프는 마치 크기가 다른 가방에 물건을 채우는 것과 같아요. 처음에는 주는 대로 족족 외우며 암기량이 늘어나지만(선이 위로 상승), 어느 순간 선이 평평해집니다. 가방이 꽉 찬 것처럼, AI의 암기 용량이 한계에 도달한 것이죠. 당연히 더 큰 AI(초록색 선)가 더 많은 정보를 외울 수 있었습니다.
@@ -66,3 +69,5 @@ Display: AI는 평범한 정보보다 희귀하고 특이한 정보를 더 강�
 결론적으로 AI는 단순한 '암기왕'이 아닙니다. 특정 조건을 만족하면 데이터의 패턴과 원리를 파악하는 '이해왕'으로 거듭날 수 있는 존재입니다.
 
 이러한 연구는 우리가 AI를 더 똑똑하게 만들 뿐만 아니라, 잠재적인 위험(개인정보 암기 등)을 막고 더 안전하게 만드는 데 큰 도움을 줍니다. AI의 세계, 알면 알수록 정말 신기하고 흥미롭지 않나요? 다음에 더 재미있는 AI 이야기로 돌아오겠습니다.
+
+URL : [How much do language models memorize?](https://arxiv.org/abs/2505.24832)
