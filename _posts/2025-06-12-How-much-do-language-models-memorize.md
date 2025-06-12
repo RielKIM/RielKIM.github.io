@@ -53,7 +53,7 @@ AI에게는 오히려 시련이 성장의 기회가 된 셈이네요!
 그렇다면 AI는 진짜 글을 공부할 때, 어떤 내용을 특별히 더 잘 외울까요? 평범한 문장일까요, 아니면 특이한 문장일까요?
 
 <figure>
-    <img src="/assets/img/2025-06-12-How-much-do-language-models-memorize/image%20%282%29.svg">
+    <img src="/assets/img/2025-06-12-How-much-do-language-models-memorize/image%20%283%29.svg">
 </figure>
 
 결과는 명확했습니다. 그래프에서 볼 수 있듯이, 데이터가 희귀하고 특이할수록(Y축 위쪽) AI는 더 강하게 암기(X축 오른쪽)했습니다.
