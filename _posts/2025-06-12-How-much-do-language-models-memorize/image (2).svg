@@ -1,0 +1,37 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="background-color: #f9f9f9; border: 1px solid #ccc; font-family: 'Malgun Gothic', sans-serif;">
+  <style>
+    .axis-label { font-size: 16px; font-weight: bold; }
+    .tick-label { font-size: 12px; }
+    .title { font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .anno-text { font-size: 14px; font-weight: bold; }
+  </style>
+  <text x="300" y="40" class="title">AI 학습의 신비한 '더블 디센트' 곡선</text>
+
+  <!-- Y-Axis -->
+  <line x1="60" y1="60" x2="60" y2="350" stroke="#333" stroke-width="2"/>
+  <text x="30" y="205" transform="rotate(-90 30 205)" class="axis-label" text-anchor="middle">테스트 실수 (낮을수록 좋음)</text>
+  <text x="50" y="70" class="tick-label" text-anchor="end">높음</text>
+  <text x="50" y="345" class="tick-label" text-anchor="end">낮음</text>
+
+  <!-- X-Axis -->
+  <line x1="60" y1="350" x2="560" y2="350" stroke="#333" stroke-width="2"/>
+  <text x="310" y="380" class="axis-label" text-anchor="middle">학습 데이터 양 / AI 뇌 용량</text>
+  
+  <!-- Data Curve -->
+  <path d="M 70 330 C 150 180, 200 150, 280 80 C 350 150, 400 200, 550 100" stroke="#ff7f00" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Vertical Line at Capacity -->
+  <line x1="280" y1="80" x2="280" y2="350" stroke="#377eb8" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="280" y="370" class="tick-label" text-anchor="middle">1 (용량=데이터)</text>
+
+  <!-- Annotations -->
+  <text x="150" y="250" class="anno-text" fill="#006400">① 학습 (점수 좋아짐)</text>
+  <path d="M 180 240 Q 200 210 220 180" stroke="#006400" fill="none" stroke-width="2"/>
+
+  <text x="300" y="70" class="anno-text" fill="#d62728">② 혼란 (점수 나빠짐!)</text>
+  <text x="300" y="90" class="anno-text" fill="#d62728" font-size="12px">"일단 다 외우자!"</text>
+  
+  <text x="450" y="160" class="anno-text" fill="#1f77b4">③ 일반화 (다시 좋아짐!)</text>
+  <path d="M 480 150 Q 500 130 520 115" stroke="#1f77b4" fill="none" stroke-width="2"/>
+   <text x="450" y="180" class="anno-text" fill="#1f77b4" font-size="12px">"외우기 포기! 이해하자!"</text>
+</svg>
