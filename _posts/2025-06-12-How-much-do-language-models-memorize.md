@@ -16,7 +16,9 @@ URL : [How much do language models memorize?](https://arxiv.org/abs/2505.24832)
 
 이런 정보는 이해할 수 없으니, 오직 암기력에만 의존해야 합니다. 결과는 어땠을까요?
 
-[image.svg](2025-06-12-How-much-do-language-models-memorize/image.svg)<!-- {"embed":"true"} -->
+<figure>
+    <a href="2025-06-12-How-much-do-language-models-memorize/image.svg"><img src="2025-06-12-How-much-do-language-models-memorize/image.svg"></a>
+</figure>
 
 위 그래프는 마치 크기가 다른 가방에 물건을 채우는 것과 같아요. 처음에는 주는 대로 족족 외우며 암기량이 늘어나지만(선이 위로 상승), 어느 순간 선이 평평해집니다. 가방이 꽉 찬 것처럼, AI의 암기 용량이 한계에 도달한 것이죠. 당연히 더 큰 AI(초록색 선)가 더 많은 정보를 외울 수 있었습니다.
 
