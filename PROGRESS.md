@@ -34,8 +34,19 @@ Only public GitHub profile/repository metadata is seeded. No private projects, e
 - [x] Browser QA: body-only and underscore queries; copy success; TOC anchor; dark theme
 - [x] Framed 390px/360px home, article, search: no horizontal overflow, one H1 each
 - [x] Automated tests: code-preserving search, heading levels, import safety, drafts/future, pagination, internal links
-- [ ] Deploy and verify live
+- [x] Deploy and verify live
 
 Final build: 30 pages, 775 internal links, 0 type errors/warnings/hints. KaTeX error nodes: 0.
 Import guard regressions include duplicate image definitions and context-sensitive table HTML.
 No private source documents or inferred employment claims included.
+
+## Blog deployment verification
+- Site code deployed from `2276d4d`; GitHub Actions run #3 succeeded in 55s.
+- 32 public routes returned 200, including every one of the 21 articles.
+- All 101 active image URLs returned 200 with image MIME types; 104 original assets retained.
+- Production search index exactly matches the local verified build; RSS has 21 items.
+- Browser production query `get_weather` returns the correct article; query/tag conjunction and empty state pass; Claude Code filter yields 3 posts.
+- Unknown routes, draft fixture and temporary QA harness return 404.
+- Production dependency audit: 0 vulnerabilities.
+- Platform-only warning: legacy action runtimes are forced to Node 24 by GitHub; build/deploy both succeeded.
+- Documentation-only final checkpoint does not rebuild the unchanged site.
