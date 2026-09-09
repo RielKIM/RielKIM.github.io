@@ -1,0 +1,6 @@
+---
+interface Heading { depth: number; slug: string; text: string; }
+interface Props { headings: Heading[]; }
+const { headings } = Astro.props;
+---
+<ul class="toc-list">{headings.filter(item => item.depth <= 3).map(item => <li class={`toc-depth-${item.depth}`}><a href={`#${item.slug}`}>{item.text}</a></li>)}</ul>

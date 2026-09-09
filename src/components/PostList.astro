@@ -1,7 +1,17 @@
 ---
-import { formatDate } from '../lib/posts';
-import type { CollectionEntry } from 'astro:content';
-interface Props { posts: CollectionEntry<'posts'>[]; }
+import { formatDate, readingMinutes, postUrl, type Post } from '../lib/posts';
+interface Props { posts: Post[]; }
 const { posts } = Astro.props;
 ---
-<div class="post-list">{posts.map(post => <article class="post-item" data-post data-search={`${post.data.title} ${post.data.description} ${post.data.tags.join(' ')}`} data-tags={JSON.stringify(post.data.tags)}><div class="post-meta"><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>{post.data.tags.map(tag => <span>{tag}</span>)}</div><h2 class="post-title"><a href={`/writing/${post.id}/`}>{post.data.title}<span class="arrow" aria-hidden="true"> ↗</span></a></h2><p class="post-description">{post.data.description}</p></article>)}</div>
+<div class="post-list">
+  {posts.map(post => <article class="post-item">
+    <div class="post-meta">
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+      <span class="reading-time">약 {readingMinutes(post)}분</span>
+      {post.data.imported && <span class="post-source">이전 글 아카이브</span>}
+    </div>
+    <h2 class="post-title"><a class="post-title-link" href={postUrl(post)}>{post.data.title}</a></h2>
+    <p class="post-description">{post.data.description}</p>
+    <div class="post-tags">{post.data.tags.map(tag => <a class="tag" href={`/search/?tag=${encodeURIComponent(tag)}`}>{tag}</a>)}</div>
+  </article>)}
+</div>

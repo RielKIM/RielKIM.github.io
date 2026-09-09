@@ -2,42 +2,102 @@
 import '@fontsource-variable/inter';
 import '../styles/global.css';
 import { profile } from '../data/profile';
-interface Props { title?: string; description?: string; noindex?: boolean; }
-const { title, description = profile.description, noindex = false } = Astro.props;
-const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} · Projects & Notes`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const nav = [{href:'/',label:'홈'},{href:'/about/',label:'소개·이력'},{href:'/projects/',label:'프로젝트'},{href:'/writing/',label:'글'}];
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  canonical?: string;
+  article?: boolean;
+  published?: Date;
+  modified?: Date;
+}
+const { title, description = profile.description, noindex = false, canonical: canonicalOverride, article = false, published, modified } = Astro.props;
+const pageTitle = title ? `${title} · ${profile.penName}` : `${profile.penName} · AI와 LLM에 대한 기록`;
+const currentUrl = new URL(Astro.url.pathname, Astro.site);
+const canonical = canonicalOverride || currentUrl;
+const nav = [
+  { href: '/', label: '블로그' },
+  { href: '/projects/', label: '프로젝트' },
+  { href: '/about/', label: '소개' },
+  { href: '/search/', label: '검색' },
+];
+const active = (href: string) => href === '/'
+  ? Astro.url.pathname === '/' || Astro.url.pathname.startsWith('/writing/') || Astro.url.pathname.startsWith('/page/')
+  : Astro.url.pathname.startsWith(href);
 ---
 <!doctype html>
 <html lang="ko">
-<head>
- <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>{pageTitle}</title><meta name="description" content={description} />
- <meta name="theme-color" content="#f8f7f3" />
- <link rel="canonical" href={canonical} /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
- <link rel="alternate" type="application/rss+xml" title={`${profile.name} 글`} href="/rss.xml" />
- <meta property="og:type" content="website" /><meta property="og:title" content={pageTitle} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:locale" content="ko_KR" />
- <meta property="og:image" content={new URL('/social-card.png', Astro.site)} /><meta name="twitter:card" content="summary_large_image" />
- {noindex && <meta name="robots" content="noindex" />}
- <script is:inline>
-  try { const saved = localStorage.getItem('theme'); document.documentElement.dataset.theme = saved === 'light' || saved === 'dark' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch { document.documentElement.dataset.theme = 'light'; }
- </script>
-</head>
-<body>
- <a class="skip-link" href="#main">본문 바로가기</a>
- <header class="site-header"><div class="container header-inner">
-  <a class="brand" href="/" aria-label="RielKIM 홈"><span class="brand-mark" aria-hidden="true">r.</span><span class="brand-name">RielKIM<span style="color:var(--accent)">.</span></span></a>
-  <div class="nav-wrap"><nav class="main-nav" aria-label="주 메뉴">{nav.map(item => <a href={item.href} aria-current={(item.href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(item.href)) ? 'page' : undefined}>{item.label}</a>)}</nav>
-  <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false" hidden>
-   <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
-  </button></div>
- </div></header>
- <main id="main" tabindex="-1"><slot /></main>
- <footer class="site-footer"><div class="container footer-inner"><div><a class="brand-name" href="/">RielKIM.</a><p class="footer-note">작은 기록이 쌓여, 다음을 만듭니다.</p></div><div class="footer-links"><a href={profile.github}>GitHub ↗</a><a href={profile.linkedin}>LinkedIn ↗</a><a href="/rss.xml">RSS ↗</a></div><p class="footer-note">© {new Date().getFullYear()} {profile.name}<br/>Built with Astro · Hosted on GitHub Pages</p></div></footer>
- <script>
-  const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
-  const sync = () => { const dark = document.documentElement.dataset.theme === 'dark'; toggle?.setAttribute('aria-pressed', String(dark)); toggle?.setAttribute('aria-label', dark ? '라이트 모드 켜기' : '다크 모드 켜기'); };
-  if (toggle) { toggle.hidden = false; sync(); toggle.addEventListener('click', () => { const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = next; try { localStorage.setItem('theme', next); } catch {} sync(); }); }
- </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f8f7f3" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={`${profile.penName} 글`} href="/rss.xml" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={currentUrl} />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content={new URL('/social-card.png', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {published && <meta property="article:published_time" content={published.toISOString()} />}
+    {modified && <meta property="article:modified_time" content={modified.toISOString()} />}
+    {noindex && <meta name="robots" content="noindex" />}
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem('theme');
+        document.documentElement.dataset.theme = saved === 'light' || saved === 'dark'
+          ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      } catch { document.documentElement.dataset.theme = 'light'; }
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문 바로가기</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="RielKIM 블로그">
+          <span class="brand-mark" aria-hidden="true">r.</span>
+          <span class="brand-name">RielKIM<span style="color:var(--accent)">.</span></span>
+        </a>
+        <div class="nav-wrap">
+          <nav class="main-nav" aria-label="주 메뉴">
+            {nav.map(item => <a href={item.href} aria-current={active(item.href) ? 'page' : undefined}>{item.label}</a>)}
+          </nav>
+          <button class="theme-toggle" type="button" aria-label="다크 모드 켜기" aria-pressed="false" hidden>
+            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div><a class="brand-name" href="/">RielKIM.</a><p class="footer-note">읽고, 이해하고, 기록합니다.</p></div>
+        <div class="footer-links"><a href="/rss.xml">RSS</a><a href={profile.github}>GitHub ↗</a><a href={profile.linkedin}>LinkedIn ↗</a></div>
+        <p class="footer-note">© {new Date().getFullYear()} {profile.name}<br/>Astro · GitHub Pages</p>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+      const sync = () => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        toggle?.setAttribute('aria-pressed', String(dark));
+        toggle?.setAttribute('aria-label', dark ? '라이트 모드 켜기' : '다크 모드 켜기');
+      };
+      if (toggle) {
+        toggle.hidden = false;
+        sync();
+        toggle.addEventListener('click', () => {
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          try { localStorage.setItem('theme', next); } catch {}
+          sync();
+        });
+      }
+    </script>
+  </body>
 </html>

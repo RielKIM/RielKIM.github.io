@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import { publishedPosts, tagCounts } from '../lib/posts';
+const posts = await publishedPosts();
+const tags = tagCounts(posts);
+---
+<Base title="글 검색" noindex>
+  <div class="container search-page">
+    <header class="page-intro"><p class="eyebrow">FIND A NOTE</p><h1 class="page-title">기록 찾아보기</h1><p class="page-description">제목, 요약, 태그뿐 아니라 글 본문에서도 검색합니다.</p></header>
+    <form class="search-form" role="search">
+      <label for="query">검색어</label>
+      <input id="query" name="q" type="search" placeholder="예: PagedAttention, 에이전트, 데이터" autocomplete="off" />
+      <button class="button primary" type="submit">검색</button>
+    </form>
+    <div class="search-filters" role="group" aria-label="주제 필터">
+      <button type="button" data-tag="" aria-pressed="true">전체 <span>{posts.length}</span></button>
+      {tags.map(([tag, count]) => <button type="button" data-tag={tag} aria-pressed="false">{tag} <span>{count}</span></button>)}
+    </div>
+    <p class="search-status" role="status" aria-live="polite">검색 색인을 불러오고 있습니다.</p>
+    <div class="search-results"></div>
+    <noscript><p class="section-description">본문 검색에는 JavaScript가 필요합니다. <a href="/">전체 글 목록에서 읽기 →</a></p></noscript>
+  </div>
+  <script>
+    interface SearchPost { title: string; description: string; body: string; tags: string[]; date: string; url: string; readingMinutes: number; }
+    const form = document.querySelector<HTMLFormElement>('.search-form')!;
+    const input = document.querySelector<HTMLInputElement>('#query')!;
+    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-tag]'));
+    const results = document.querySelector<HTMLElement>('.search-results')!;
+    const status = document.querySelector<HTMLElement>('.search-status')!;
+    const params = new URLSearchParams(location.search);
+    let selected = params.get('tag') || '';
+    let posts: SearchPost[] = [];
+    let ready = false;
+    const normalize = (text: string) => text.normalize('NFKC').toLocaleLowerCase();
+    input.value = params.get('q') || '';
+    if (!buttons.some(button => button.dataset.tag === selected)) selected = '';
+
+    function render() {
+      buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tag === selected)));
+      if (!ready) return;
+      const query = normalize(input.value.trim());
+      const terms = query.split(/\s+/).filter(Boolean);
+      const matches = posts.map((post, order) => {
+        const title = normalize(post.title);
+        const description = normalize(post.description);
+        const tags = normalize(post.tags.join(' '));
+        const body = normalize(post.body);
+        const haystack = `${title} ${description} ${tags} ${body}`;
+        const included = (!selected || post.tags.includes(selected)) && terms.every(term => haystack.includes(term));
+        const score = terms.reduce((total, term) => total + (title.includes(term) ? 8 : 0) + (tags.includes(term) ? 4 : 0) + (description.includes(term) ? 2 : 0), 0);
+        return { post, included, score, order };
+      }).filter(item => item.included).sort((a, b) => b.score - a.score || a.order - b.order);
+      results.replaceChildren();
+      status.textContent = `${matches.length}개의 글${selected ? ` · ${selected}` : ''}`;
+      for (const { post } of matches) {
+        const item = document.createElement('article'); item.className = 'search-result';
+        const meta = document.createElement('p'); meta.className = 'post-meta'; meta.textContent = `${post.date} · 약 ${post.readingMinutes}분`;
+        const heading = document.createElement('h2');
+        const link = document.createElement('a'); link.href = post.url; link.textContent = post.title; heading.append(link);
+        const excerpt = document.createElement('p'); excerpt.className = 'post-description';
+        const hit = terms.length ? normalize(post.body).indexOf(terms[0]) : -1;
+        const start = Math.max(0, hit - 65);
+        excerpt.textContent = hit >= 0 ? `${start > 0 ? '…' : ''}${post.body.slice(start, start + 230)}${start + 230 < post.body.length ? '…' : ''}` : post.description;
+        const tagLine = document.createElement('p'); tagLine.className = 'post-meta'; tagLine.textContent = post.tags.join(' · ');
+        item.append(meta, heading, excerpt, tagLine); results.append(item);
+      }
+      if (!matches.length) {
+        const message = document.createElement('p'); message.className = 'search-empty';
+        message.textContent = '검색 결과가 없습니다. 다른 검색어를 쓰거나 주제 필터를 전체로 바꿔보세요.'; results.append(message);
+      }
+      const state = new URLSearchParams();
+      if (input.value.trim()) state.set('q', input.value.trim());
+      if (selected) state.set('tag', selected);
+      history.replaceState(null, '', `/search/${state.size ? '?' + state.toString() : ''}`);
+    }
+    form.addEventListener('submit', event => { event.preventDefault(); render(); });
+    input.addEventListener('input', render);
+    buttons.forEach(button => button.addEventListener('click', () => { selected = button.dataset.tag || ''; render(); }));
+    fetch('/search-index.json').then(response => {
+      if (!response.ok) throw new Error('Search index unavailable');
+      return response.json();
+    }).then((data: SearchPost[]) => { posts = data; ready = true; render(); }).catch(() => {
+      status.textContent = '검색 색인을 불러오지 못했습니다. 새로고침하거나 전체 글 목록을 이용해 주세요.';
+      const fallback = document.createElement('a'); fallback.href = '/'; fallback.className = 'text-link'; fallback.textContent = '전체 글 목록 →'; results.append(fallback);
+    });
+  </script>
+</Base>
