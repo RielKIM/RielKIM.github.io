@@ -1,0 +1,25 @@
+---
+import { projects } from '../data/projects';
+interface Props { project: (typeof projects)[number]; index: number; }
+const { project, index } = Astro.props;
+---
+<a class="project-card" href={project.url} aria-label={`${project.title} GitHub 저장소 보기`}>
+ <div class:list={['project-art', project.color]} aria-hidden="true">
+  <svg viewBox="0 0 360 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+   {project.motif === 'tree' ? <>
+    <path d="M87 116h50m0 0c30 0 15-54 48-54h36m-84 54c30 0 15 54 48 54h36m-84-54h70" stroke="#796797" stroke-width="1.5"/>
+    <rect x="32" y="96" width="72" height="40" rx="9" fill="#fff"/><text x="68" y="121" text-anchor="middle" font-size="13" fill="#3c334a">words</text>
+    <rect x="213" y="42" width="108" height="40" rx="9" fill="#fff"/><text x="267" y="67" text-anchor="middle" font-size="13" fill="#3c334a">connect</text>
+    <rect x="197" y="96" width="103" height="40" rx="9" fill="#302938"/><text x="248" y="121" text-anchor="middle" font-size="13" fill="#fff">ideas</text>
+    <rect x="213" y="150" width="108" height="40" rx="9" fill="#fff"/><text x="267" y="175" text-anchor="middle" font-size="13" fill="#3c334a">meaning</text>
+   </> : project.motif === 'code' ? <>
+    <rect x="39" y="38" width="282" height="155" rx="12" fill="#fff"/><path d="M39 73h282" stroke="#e5e8df"/><circle cx="56" cy="56" r="3" fill="#a0aa8b"/><circle cx="68" cy="56" r="3" fill="#c2c9b3"/><circle cx="80" cy="56" r="3" fill="#dce1d3"/>
+    <text x="62" y="108" font-family="monospace" font-size="13" fill="#838b74"># less friction, more clarity</text><text x="62" y="137" font-family="monospace" font-size="16" fill="#38412e">config.database.host</text><text x="62" y="167" font-family="monospace" font-size="13" fill="#697951">'localhost'</text>
+   </> : <>
+    <rect x="39" y="38" width="282" height="155" rx="12" fill="#33312d"/><circle cx="58" cy="58" r="3" fill="#ddc7a6"/><circle cx="70" cy="58" r="3" fill="#8a857b"/><circle cx="82" cy="58" r="3" fill="#8a857b"/>
+    <text x="61" y="109" font-family="monospace" font-size="14" fill="#d5c5e6">~ / workspace</text><text x="61" y="139" font-family="monospace" font-size="14" fill="#efe9de">$ vim hello.py</text><path d="M61 165h9" stroke="#c7d5a0" stroke-width="2"/>
+   </>}
+  </svg>
+ </div>
+ <div class="project-body"><p class="project-category">{project.category}</p><h3 class="project-title">{project.title}</h3><p class="project-description">{project.description}</p><div class="tags">{project.tags.map(tag => <span class="tag">{tag}</span>)}</div><div class="project-footer"><span class="project-number">{String(index + 1).padStart(2,'0')} / PUBLIC REPOSITORY</span><span class="arrow" aria-hidden="true">↗</span></div></div>
+</a>
