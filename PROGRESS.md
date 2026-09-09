@@ -24,3 +24,10 @@ Only public GitHub profile/repository metadata is seeded. No private projects, e
 - No synthetic QA posts in production.
 - Independent re-review: prior P2 resolved, no remaining issue in scope.
 - Career details and authored posts intentionally await owner-provided content.
+
+## Blog-first redesign
+- [ ] Inventory Brunch and Velog posts with source attribution
+- [ ] Article-first homepage and compact navigation
+- [ ] Full-text search, TOC, copy code, dates, related posts
+- [ ] Source/content and browser QA; independent review
+- [ ] Deploy and verify live
