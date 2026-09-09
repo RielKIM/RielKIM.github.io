@@ -2,7 +2,7 @@
 - [x] Astro scaffold and typed content model
 - [x] Responsive pages and accessibility
 - [x] Build and independent review (P2 fixed; regression tests PASS)
-- [ ] Recreate repository and deploy GitHub Pages
+- [x] Recreate repository and deploy GitHub Pages
 
 ## Content policy
 Only public GitHub profile/repository metadata is seeded. No private projects, employment claims, or fabricated achievements.
@@ -14,3 +14,13 @@ Only public GitHub profile/repository metadata is seeded. No private projects, e
 - Browser: theme, writing search, tag filter, empty results, Markdown code/table render PASS.
 - 390px/360px framed mobile and 768px tablet: no horizontal overflow.
 - npm production audit: 0 vulnerabilities.
+
+## Deployment verification
+- Existing repository backed up, deleted, and recreated as standalone public repository.
+- GitHub Pages source: GitHub Actions, HTTPS enabled.
+- Astro deployment succeeded; default Jekyll run canceled.
+- https://rielkim.github.io/ and /about/, /projects/, /writing/ returned 200.
+- RSS, sitemap and social image returned 200; unknown route returned custom 404.
+- No synthetic QA posts in production.
+- Independent re-review: prior P2 resolved, no remaining issue in scope.
+- Career details and authored posts intentionally await owner-provided content.
