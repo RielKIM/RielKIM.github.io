@@ -1,4 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { plainText } from './text';
+export { plainText } from './text';
 export type Post = CollectionEntry<'posts'>;
 export const POSTS_PER_PAGE = 10;
 
@@ -11,15 +13,6 @@ export function formatDate(date: Date): string {
   return new Intl.DateTimeFormat('ko-KR', {
     year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Seoul',
   }).format(date);
-}
-export function plainText(markdown = ''): string {
-  return markdown
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/(?:^|\n)\s{0,3}#{1,6}\s+/g, ' ')
-    .replace(/[`*_~>|]/g, ' ')
-    .replace(/\s+/g, ' ').trim();
 }
 export function readingMinutes(post: Post): number {
   // Approximation: Korean characters and non-Korean words use separate rates.

@@ -14,7 +14,8 @@ const tags = tagCounts(posts);
     </form>
     <div class="search-filters" role="group" aria-label="주제 필터">
       <button type="button" data-tag="" aria-pressed="true">전체 <span>{posts.length}</span></button>
-      {tags.map(([tag, count]) => <button type="button" data-tag={tag} aria-pressed="false">{tag} <span>{count}</span></button>)}
+      {tags.slice(0, 8).map(([tag, count]) => <button type="button" data-tag={tag} aria-pressed="false">{tag} <span>{count}</span></button>)}
+      {tags.length > 8 && <details class="more-topics"><summary>모든 주제 보기 ({tags.length})</summary><div class="more-topic-list">{tags.slice(8).map(([tag, count]) => <button type="button" data-tag={tag} aria-pressed="false">{tag} <span>{count}</span></button>)}</div></details>}
     </div>
     <p class="search-status" role="status" aria-live="polite">검색 색인을 불러오고 있습니다.</p>
     <div class="search-results"></div>
@@ -34,6 +35,8 @@ const tags = tagCounts(posts);
     const normalize = (text: string) => text.normalize('NFKC').toLocaleLowerCase();
     input.value = params.get('q') || '';
     if (!buttons.some(button => button.dataset.tag === selected)) selected = '';
+    const selectedGroup = buttons.find(button => button.dataset.tag === selected)?.closest('details');
+    if (selectedGroup) selectedGroup.open = true;
 
     function render() {
       buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tag === selected)));

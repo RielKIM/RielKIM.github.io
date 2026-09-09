@@ -1,0 +1,245 @@
+{
+  "importedOn": "2026-09-09",
+  "sourceCounts": {
+    "brunch": 12,
+    "velog": 10
+  },
+  "uniquePosts": 21,
+  "posts": [
+    {
+      "file": "brunch-10.md",
+      "title": "AI에게 '스킬'을 가르치면 일어나는 일",
+      "published": "2026-01-25T01:36:12+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/10"
+        }
+      ]
+    },
+    {
+      "file": "brunch-11.md",
+      "title": "코딩 도구가 아닌 Claude Code",
+      "published": "2026-01-26T00:00:23+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/11"
+        }
+      ]
+    },
+    {
+      "file": "brunch-12.md",
+      "title": "AI로 쓴 내 글은 정말 내 글일까?",
+      "published": "2026-01-25T12:20:08+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/12"
+        }
+      ]
+    },
+    {
+      "file": "brunch-13.md",
+      "title": "PyTorch 밑의 세상:CUDA 계층 구조 완전 분해",
+      "published": "2026-02-01T08:29:40+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/13"
+        }
+      ]
+    },
+    {
+      "file": "brunch-14.md",
+      "title": "Low Rank 와 LoRA",
+      "published": "2026-02-08T12:58:53+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/14"
+        }
+      ]
+    },
+    {
+      "file": "brunch-16.md",
+      "title": "The Prompting Playbook 실전 가이드",
+      "published": "2026-07-25T14:07:54+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/16"
+        }
+      ]
+    },
+    {
+      "file": "brunch-2.md",
+      "title": "Multi Agent와 Agentic Workflow?",
+      "published": "2025-06-25T05:00:05+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/2"
+        }
+      ]
+    },
+    {
+      "file": "brunch-3.md",
+      "title": "AI, 언어모델, LLM: 5분 만에 정리해 드립니다.",
+      "published": "2025-06-25T13:26:57+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/3"
+        }
+      ]
+    },
+    {
+      "file": "brunch-6.md",
+      "title": "LLM Optimizer MuonClip vs Adam",
+      "published": "2025-09-06T16:19:05+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/6"
+        }
+      ]
+    },
+    {
+      "file": "brunch-7.md",
+      "title": "NVIDIA 29조원(Groq인수)을 쏟아부은 이유",
+      "published": "2026-01-04T14:23:34+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/7"
+        }
+      ]
+    },
+    {
+      "file": "brunch-9.md",
+      "title": "Claude Code Skills 란?",
+      "published": "2026-01-24T02:40:33+09:00",
+      "sources": [
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/9"
+        }
+      ]
+    },
+    {
+      "file": "velog-ai-papers-2026-01-12-18.md",
+      "title": "2026년 1월 12-18일 주요 AI 논문 심층 분석",
+      "published": "2026-01-19T01:15:03.791Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/2026년-1월-12-18일-주요-AI-논문-심층-분석"
+        }
+      ]
+    },
+    {
+      "file": "velog-data-diversity.md",
+      "title": "[논문] Data Diversity Matters for Robust Instruction Tuning",
+      "published": "2025-06-21T06:36:37.732Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/논문-Data-Diversity-Matters-for-Robust-Instruction-Tuning"
+        }
+      ]
+    },
+    {
+      "file": "velog-efficient-continual-pretraining.md",
+      "title": "[논문] Efficient Continual Pre-training for Building Domain Specific Large Language Models",
+      "published": "2025-06-19T02:23:13.585Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/LLM-전문가-A-to-Z-학습은-이제-그만-10-데이터로-성능-뛰어넘는-비법"
+        }
+      ]
+    },
+    {
+      "file": "velog-language-model-memorization.md",
+      "title": "[논문] How much do language models memorize?",
+      "published": "2025-06-18T13:00:55.862Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/LLM의-기억력-숫자로-측정할-수-있을까-파라미터당-3.6비트의-비밀"
+        }
+      ]
+    },
+    {
+      "file": "velog-lima.md",
+      "title": "[논문] LIMA: Less Is More for Alignment",
+      "published": "2025-06-20T11:13:31.335Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/논문-LIMA-Less-Is-More-for-Alignment"
+        }
+      ]
+    },
+    {
+      "file": "velog-llm-agent-planning.md",
+      "title": "LLM 에이전트, '만들기' 전에 '기획'하는 법",
+      "published": "2025-06-19T14:17:17.993Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/LLM-에이전트-만들기-전에-기획하는-법"
+        },
+        {
+          "name": "Brunch",
+          "url": "https://brunch.co.kr/@ukai/1"
+        }
+      ]
+    },
+    {
+      "file": "velog-nvidia-nemo.md",
+      "title": "개발자를 위한 NVIDIA NeMo 가이드: 생성 AI 모델 구축부터 배포까지",
+      "published": "2025-06-19T04:00:19.839Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/개발자를-위한-NVIDIA-NeMo-가이드-생성-AI-모델-구축부터-배포까지"
+        }
+      ]
+    },
+    {
+      "file": "velog-pagedattention-vllm.md",
+      "title": "[논문] Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "published": "2025-06-18T04:29:45.837Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/LLM-서빙-4배-빨라진-비밀-운영체제에서-훔친-메모리-관리-기법-vLLM-iidefb70"
+        }
+      ]
+    },
+    {
+      "file": "velog-reflexion.md",
+      "title": "[논문] Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "published": "2025-06-22T02:23:57.354Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/Reflexion-Language-Agents-with-Verbal-Reinforcement-Learning"
+        }
+      ]
+    },
+    {
+      "file": "velog-rethinking-data-selection.md",
+      "title": "[논문] RETHINKING DATA SELECTION AT SCALE: RANDOM SELECTION IS ALMOST ALL YOU NEED",
+      "published": "2025-06-18T13:44:15.597Z",
+      "sources": [
+        {
+          "name": "Velog",
+          "url": "https://velog.io/@ukng1024/LLM-성능-족집게-과외보다-랜덤이-나은-이유"
+        }
+      ]
+    }
+  ]
+}

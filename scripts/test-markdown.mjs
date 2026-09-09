@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import normalizeHeadings from '../src/plugins/remark-article-headings.mjs';
+import contentSafety from '../src/plugins/remark-content-safety.mjs';
+import { plainText } from '../src/lib/text.ts';
+const parser = unified().use(remarkParse);
+const source = '# Title\n\n### Main section\n\n#### Child section\n\n### Next section';
+const tree = parser.parse(source); normalizeHeadings()(tree);
+assert.deepEqual(tree.children.filter(n => n.type === 'heading').map(n => n.depth), [2,3,4,3]);
+const text = plainText('**bold** and `get_weather`\n\n```python\ngpus_per_node = 2\nfile = "my_text.txt"\nmodel = "<MODEL>"\n```\n\n<strong>visible HTML text</strong>');
+for (const needle of ['bold','get_weather','gpus_per_node','my_text.txt','<MODEL>','visible HTML text']) assert.ok(text.includes(needle), `Search text lost ${needle}`);
+const guard = input => contentSafety()(parser.parse(input));
+for (const unsafe of ['<script>alert(1)</script>','<p onclick="alert(1)">x</p>','<iframe src="https://example.com"></iframe>','[x](javascript:alert%281%29)','[x](https://user:password@example.com/)','![](https://example.com/image.png)','<img src="/images/x.png">','![x][pic]\n\n[pic]: https://example.com/image.png','<span style="background:url(https://example.com/track)">x</span>']) assert.throws(() => guard(unsafe), undefined, `Unsafe content accepted: ${unsafe}`);
+for (const safe of ['<strong><u>test</u></strong><br>','[source](https://example.com/path)','![figure](/images/figure.png)','```html\n<script>example()</script>\n```']) assert.doesNotThrow(() => guard(safe));
+console.log('PASS: contiguous headings, code-preserving full-text extraction, active HTML/remote image/source credential guards.');

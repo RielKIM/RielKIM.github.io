@@ -287,7 +287,6 @@ a.tag, button.tag { min-height: 2rem; }
 .prose pre { position: relative; max-width: 100%; min-width: 0; overflow: auto; padding: 1.25rem; background: #25212b !important; color: #f1edf5 !important; border: 1px solid #514759; border-radius: .4rem; line-height: 1.75; tab-size: 2; }
 .prose pre.has-copy { padding-top: 2.75rem; }
 .prose pre code { display: block; min-width: 0; width: max-content; max-width: none; font-size: inherit; background: transparent; color: inherit; border: 0; white-space: pre; }
-.prose pre.astro-code span { color: var(--shiki-dark, #f1edf5) !important; }
 .code-copy-btn { position: absolute; top: .625rem; right: .625rem; z-index: 1; min-height: 1.75rem; padding: .2rem .6rem; border: 1px solid #8d8099; border-radius: .25rem; background: #37303f; color: #f1edf5; font-family: inherit; font-size: .6875rem; line-height: 1.5; }
 .prose table { display: block; width: max-content; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: .9375rem; }
 .prose th, .prose td { padding: .65rem .85rem; border: 1px solid var(--border); text-align: left; min-width: 6rem; }
@@ -446,3 +445,11 @@ a.tag, button.tag { min-height: 2rem; }
   h1, h2, h3, h4 { break-after: avoid; }
   p, li { orphans: 3; widows: 3; }
 }
+
+/* Keep a large topic vocabulary from overpowering the search results. */
+.more-topics { flex-basis: 100%; margin-top: .45rem; }
+.more-topics summary { cursor: pointer; padding: .6rem 0; color: var(--muted); font-size: .875rem; }
+.more-topic-list { display: flex; flex-wrap: wrap; gap: .5rem; padding-block: .65rem; }
+.about-topics { padding-left: 1.2rem; margin-top: 1.3rem; }
+.about-topics li { margin-bottom: 1.1rem; }
+.about-topics p { margin-top: .3rem; color: var(--muted); }
