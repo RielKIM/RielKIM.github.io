@@ -292,6 +292,8 @@ a.tag, button.tag { min-height: 2rem; }
 .prose th, .prose td { padding: .65rem .85rem; border: 1px solid var(--border); text-align: left; min-width: 6rem; }
 .prose th { background: var(--surface-subtle); font-weight: 650; }
 .prose img { display: block; max-width: 100%; height: auto; border-radius: .3rem; margin-inline: auto; filter: none; }
+/* Keep the ontology explainer's labeled diagrams proportional to its body text. */
+.prose img[src^="/images/ontology-llm-knowledge-construction/"] { width: 70%; }
 .prose figure { max-width: 100%; }
 .prose figcaption { text-align: center; color: var(--muted); font-size: .8125rem; margin-top: .65rem; }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin-block: 2.8em; }
