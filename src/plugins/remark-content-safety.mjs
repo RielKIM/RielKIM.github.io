@@ -1,4 +1,4 @@
-import { parseFragment } from 'parse5';
+import { SAXParser } from 'parse5-sax-parser';
 const inertTags = new Set(['strong','b','u','em','i','s','del','sub','sup','span','div','p','br','hr','table','thead','tbody','tfoot','tr','th','td','figure','figcaption','a','code','pre','blockquote','ul','ol','li','details','summary']);
 const inertAttributes = new Set(['class','id','title','href','colspan','rowspan','scope','align','open','start','reversed','aria-label']);
 export function validateUrl(value, image = false) {
@@ -13,21 +13,31 @@ export function validateUrl(value, image = false) {
 export default function remarkContentSafety() {
   return tree => {
     const definitions = new Map();
-    const collect = node => { if (node.type === 'definition') definitions.set(node.identifier, node.url); node.children?.forEach(collect); };
+    const collect = node => {
+      if (node.type === 'definition') {
+        if (definitions.has(node.identifier)) throw new Error('Duplicate normalized link/image definition');
+        definitions.set(node.identifier, node.url);
+      }
+      node.children?.forEach(collect);
+    };
     collect(tree);
-    const inspectHtml = node => {
-      if (node.tagName) {
+    // Tokenize rather than repair each fragment as a DOM. Tree repair can discard
+    // table tags/attributes that become active once the fragments are combined.
+    const rawHtml = [];
+    const inspectHtml = html => {
+      const sax = new SAXParser();
+      sax.on('startTag', node => {
         const tag = node.tagName.toLowerCase();
         if (!inertTags.has(tag)) throw new Error(`Unsupported raw HTML <${tag}> in article; use Markdown for images and headings`);
         for (const attr of node.attrs || []) {
           if (/^on/i.test(attr.name) || !inertAttributes.has(attr.name)) throw new Error(`Unsafe raw HTML attribute ${attr.name}`);
           if (attr.name === 'href') validateUrl(attr.value);
         }
-      }
-      node.childNodes?.forEach(inspectHtml);
+      });
+      sax.end(html);
     };
     const visit = node => {
-      if (node.type === 'html') inspectHtml(parseFragment(node.value || ''));
+      if (node.type === 'html') rawHtml.push(node.value || '');
       if (node.type === 'image') validateUrl(node.url, true);
       if (node.type === 'imageReference') {
         const source = definitions.get(node.identifier);
@@ -37,5 +47,6 @@ export default function remarkContentSafety() {
       node.children?.forEach(visit);
     };
     visit(tree);
+    inspectHtml(rawHtml.join('\n'));
   };
 }

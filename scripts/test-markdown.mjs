@@ -12,5 +12,7 @@ const text = plainText('**bold** and `get_weather`\n\n```python\ngpus_per_node =
 for (const needle of ['bold','get_weather','gpus_per_node','my_text.txt','<MODEL>','visible HTML text']) assert.ok(text.includes(needle), `Search text lost ${needle}`);
 const guard = input => contentSafety()(parser.parse(input));
 for (const unsafe of ['<script>alert(1)</script>','<p onclick="alert(1)">x</p>','<iframe src="https://example.com"></iframe>','[x](javascript:alert%281%29)','[x](https://user:password@example.com/)','![](https://example.com/image.png)','<img src="/images/x.png">','![x][pic]\n\n[pic]: https://example.com/image.png','<span style="background:url(https://example.com/track)">x</span>']) assert.throws(() => guard(unsafe), undefined, `Unsafe content accepted: ${unsafe}`);
+assert.throws(() => guard('![figure][pic]\n\n[pic]: https://example.com/tracker.png\n[PiC]: /images/brunch/14/01.png'));
+assert.throws(() => guard('<table>\n\n<div></div><tr onclick="alert(1)"><td>click</td></tr>\n\n</table>'));
 for (const safe of ['<strong><u>test</u></strong><br>','[source](https://example.com/path)','![figure](/images/figure.png)','```html\n<script>example()</script>\n```']) assert.doesNotThrow(() => guard(safe));
 console.log('PASS: contiguous headings, code-preserving full-text extraction, active HTML/remote image/source credential guards.');

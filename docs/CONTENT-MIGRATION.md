@@ -14,3 +14,12 @@
 ## Source accounts
 - https://brunch.co.kr/@ukai
 - https://velog.io/@ukng1024/posts
+
+## Verification
+- Full metadata/source manifest: `content-sources.json`.
+- Independent source audit: PASS; all 21 metadata records and 104 images, plus direct source comparisons for Brunch /16, /10 and Velog NeMo.
+- 101 active local image references; three duplicate Brunch table assets retained but unused.
+- Source Markdown is preserved; heading hierarchy and code/math/image presentation are normalized at build time.
+- Brunch embedded video is represented by its original source link, avoiding third-party tracking embeds.
+- Search text is parsed from Markdown, preserving code identifiers and math rather than stripping punctuation.
+- Import safety checks reject active HTML, unsafe URLs, nonlocal images and duplicate reference definitions.
