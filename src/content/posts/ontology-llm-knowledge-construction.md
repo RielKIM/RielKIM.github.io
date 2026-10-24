@@ -152,7 +152,6 @@ LLM은 이 여러 단계에서 제안하고 설명하는 역할을 맡을 수 �
 3. Funk 등. [Towards Ontology Construction with Language Models](https://arxiv.org/abs/2309.09898), 2023. 특히 §3의 관계 혼동, §4의 계층 삽입, §6의 평가 한계.
 4. Kommineni 등. [From human experts to machines: An LLM supported approach to ontology and knowledge graph construction](https://arxiv.org/abs/2403.08345v1), 2024. 읽은 버전은 v1이며, 특히 §3·§4를 참고했습니다.
 5. Zhang, Soh. [Extract, Define, Canonicalize: An LLM-based Framework for Knowledge Graph Construction](https://aclanthology.org/2024.emnlp-main.548/), 2024. 특히 그림 1과 §3의 세 단계·보완 추출.
-
 6. W3C. [OWL 2 Web Ontology Language Primer (Second Edition)](https://www.w3.org/TR/owl2-primer/), 2012. §2의 온톨로지와 개별 대상에 관한 진술.
 7. Hogan 등. [Knowledge Graphs](https://arxiv.org/abs/2003.02320v6), 2021년 arXiv v6. §3·§3.1의 스키마·온톨로지·규칙과 데이터 그래프의 관계. 그림 번호는 이 확장판을 기준으로 합니다.
 8. Neo4j. [Taxonomy vs. ontology vs. knowledge graph: What’s the difference?](https://neo4j.com/blog/knowledge-graph/taxonomy-vs-ontology-vs-knowledge-graph). 비교 도식의 위아래 배치를 위한 참고 자료이며, 특정 그래프 구현에 관한 설명을 일반 정의로 사용하지 않았습니다.
