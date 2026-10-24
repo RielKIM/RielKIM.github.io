@@ -267,10 +267,10 @@ a.tag, button.tag { min-height: 2rem; }
 .toc-mobile summary { min-height: 2.75rem; padding-block: .55rem; cursor: pointer; font-weight: 600; }
 .toc-mobile a { display: block; min-height: 2rem; padding-block: .3rem; color: var(--muted); }
 .toc-mobile[open] { padding-bottom: 1rem; }
-.prose { width: 100%; min-width: 0; font-size: 1.09375rem; line-height: 1.9; color: var(--text); overflow-wrap: anywhere; }
+.prose { width: 100%; min-width: 0; font-size: 1.09375rem; line-height: 1.8; color: var(--text); word-break: keep-all; overflow-wrap: anywhere; }
 .prose > :first-child { margin-top: 0; }
-.prose p, .prose ul, .prose ol, .prose blockquote, .prose pre, .prose table, .prose figure { margin-block: 1.4em; }
-.prose h2, .prose h3, .prose h4 { margin-top: 2.3em; margin-bottom: .8em; font-weight: 650; line-height: 1.5; letter-spacing: -.035em; scroll-margin-top: 2rem; }
+.prose p, .prose ul, .prose ol, .prose blockquote, .prose pre, .prose table, .prose figure { margin-block: 1.25em; }
+.prose h2, .prose h3, .prose h4 { margin-top: 2.3em; margin-bottom: .8em; font-weight: 650; line-height: 1.4; letter-spacing: -.035em; scroll-margin-top: 2rem; }
 .prose h2 { font-size: 1.6875rem; }
 .prose h3 { font-size: 1.375rem; }
 .prose h4 { font-size: 1.125rem; }
@@ -294,6 +294,10 @@ a.tag, button.tag { min-height: 2rem; }
 .prose img { display: block; max-width: 100%; height: auto; border-radius: .3rem; margin-inline: auto; filter: none; }
 /* Size native post images responsively while preserving imported post images. */
 .prose--native img { width: 70%; }
+/* An emphasized paragraph right after an image is that image's caption. */
+.prose--native p:has(> img) { margin-bottom: .6em; }
+.prose--native p:has(> img) + p:has(> em:only-child) { width: 70%; margin: 0 auto 2em; color: var(--muted); font-size: .875rem; line-height: 1.7; }
+.prose--native p:has(> img) + p > em:only-child { font-style: normal; }
 .prose figure { max-width: 100%; }
 .prose figcaption { text-align: center; color: var(--muted); font-size: .8125rem; margin-top: .65rem; }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin-block: 2.8em; }
@@ -357,7 +361,7 @@ a.tag, button.tag { min-height: 2rem; }
   .project-facts { gap: 1rem; }
 }
 @media (max-width: 40rem) {
-  .prose--native img { width: 100%; }
+  .prose--native img, .prose--native p:has(> img) + p:has(> em:only-child) { width: 100%; }
 }
 @media (max-width: 32.5rem) {
   .container, .search-page, .article-shell { width: calc(100% - 2.25rem); }
