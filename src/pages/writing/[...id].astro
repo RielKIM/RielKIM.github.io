@@ -26,7 +26,7 @@ const canonical = post.data.imported ? post.data.sources[0]?.url : undefined;
       {post.data.imported && <aside class="source-notice" aria-label="원문과 이관 안내">
         <p><strong>이전 글 아카이브</strong> · 원래 작성한 시점의 내용을 옮긴 글입니다.</p>
         <p>기술 버전과 수치·주장은 최초 작성 시점을 기준으로 읽어주세요. 이관 과정에서 최신 사실로 다시 검증하거나 갱신하지 않았습니다.</p>
-        <div class="source-links">{post.data.sources.map(source => <a href={source.url}>{source.name === 'Brunch' ? '브런치' : 'Velog'} 원문 ↗</a>)}</div>
+        <div class="source-links">{post.data.sources.map(source => <a href={source.url}>브런치 원문 ↗</a>)}</div>
         {post.data.archiveNote && <p>{post.data.archiveNote}</p>}
       </aside>}
       {toc.length > 1 && <details class="toc-mobile"><summary>이 글의 목차</summary><TableOfContents headings={toc}/></details>}

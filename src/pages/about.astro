@@ -11,7 +11,7 @@ const posts = await publishedPosts();
       <aside class="profile-card">
         <div class="monogram" aria-hidden="true">YK<span>.</span></div>
         <h2 class="profile-name">{profile.name}</h2><p class="profile-handle">@{profile.handle} · {profile.penName}</p>
-        <div class="profile-links"><a href={profile.github}>GitHub ↗</a><a href={profile.linkedin}>LinkedIn ↗</a><a href={profile.brunch}>브런치 ↗</a><a href={profile.velog}>Velog ↗</a>{profile.email && <a href={`mailto:${profile.email}`}>이메일 ↗</a>}</div>
+        <div class="profile-links"><a href={profile.github}>GitHub ↗</a><a href={profile.linkedin}>LinkedIn ↗</a><a href={profile.brunch}>브런치 ↗</a>{profile.email && <a href={`mailto:${profile.email}`}>이메일 ↗</a>}</div>
         <button class="button secondary print-button" hidden type="button">이 페이지 인쇄 / PDF</button>
       </aside>
       <div class="about-content">

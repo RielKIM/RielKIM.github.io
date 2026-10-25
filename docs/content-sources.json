@@ -1,10 +1,9 @@
 {
   "importedOn": "2026-09-09",
   "sourceCounts": {
-    "brunch": 12,
-    "velog": 10
+    "brunch": 11
   },
-  "uniquePosts": 21,
+  "uniquePosts": 11,
   "posts": [
     {
       "file": "brunch-10.md",
@@ -126,120 +125,16 @@
           "url": "https://brunch.co.kr/@ukai/9"
         }
       ]
-    },
-    {
-      "file": "velog-ai-papers-2026-01-12-18.md",
-      "title": "2026년 1월 12-18일 주요 AI 논문 심층 분석",
-      "published": "2026-01-19T01:15:03.791Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/2026년-1월-12-18일-주요-AI-논문-심층-분석"
-        }
-      ]
-    },
-    {
-      "file": "velog-data-diversity.md",
-      "title": "[논문] Data Diversity Matters for Robust Instruction Tuning",
-      "published": "2025-06-21T06:36:37.732Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/논문-Data-Diversity-Matters-for-Robust-Instruction-Tuning"
-        }
-      ]
-    },
-    {
-      "file": "velog-efficient-continual-pretraining.md",
-      "title": "[논문] Efficient Continual Pre-training for Building Domain Specific Large Language Models",
-      "published": "2025-06-19T02:23:13.585Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/LLM-전문가-A-to-Z-학습은-이제-그만-10-데이터로-성능-뛰어넘는-비법"
-        }
-      ]
-    },
-    {
-      "file": "velog-language-model-memorization.md",
-      "title": "[논문] How much do language models memorize?",
-      "published": "2025-06-18T13:00:55.862Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/LLM의-기억력-숫자로-측정할-수-있을까-파라미터당-3.6비트의-비밀"
-        }
-      ]
-    },
-    {
-      "file": "velog-lima.md",
-      "title": "[논문] LIMA: Less Is More for Alignment",
-      "published": "2025-06-20T11:13:31.335Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/논문-LIMA-Less-Is-More-for-Alignment"
-        }
-      ]
-    },
-    {
-      "file": "velog-llm-agent-planning.md",
-      "title": "LLM 에이전트, '만들기' 전에 '기획'하는 법",
-      "published": "2025-06-19T14:17:17.993Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/LLM-에이전트-만들기-전에-기획하는-법"
-        },
-        {
-          "name": "Brunch",
-          "url": "https://brunch.co.kr/@ukai/1"
-        }
-      ]
-    },
-    {
-      "file": "velog-nvidia-nemo.md",
-      "title": "개발자를 위한 NVIDIA NeMo 가이드: 생성 AI 모델 구축부터 배포까지",
-      "published": "2025-06-19T04:00:19.839Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/개발자를-위한-NVIDIA-NeMo-가이드-생성-AI-모델-구축부터-배포까지"
-        }
-      ]
-    },
-    {
-      "file": "velog-pagedattention-vllm.md",
-      "title": "[논문] Efficient Memory Management for Large Language Model Serving with PagedAttention",
-      "published": "2025-06-18T04:29:45.837Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/LLM-서빙-4배-빨라진-비밀-운영체제에서-훔친-메모리-관리-기법-vLLM-iidefb70"
-        }
-      ]
-    },
-    {
-      "file": "velog-reflexion.md",
-      "title": "[논문] Reflexion: Language Agents with Verbal Reinforcement Learning",
-      "published": "2025-06-22T02:23:57.354Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/Reflexion-Language-Agents-with-Verbal-Reinforcement-Learning"
-        }
-      ]
-    },
-    {
-      "file": "velog-rethinking-data-selection.md",
-      "title": "[논문] RETHINKING DATA SELECTION AT SCALE: RANDOM SELECTION IS ALMOST ALL YOU NEED",
-      "published": "2025-06-18T13:44:15.597Z",
-      "sources": [
-        {
-          "name": "Velog",
-          "url": "https://velog.io/@ukng1024/LLM-성능-족집게-과외보다-랜덤이-나은-이유"
-        }
-      ]
     }
-  ]
+  ],
+  "inspectedSourceCounts": {
+    "brunch": 12
+  },
+  "lastUpdated": "2026-10-25",
+  "removal": {
+    "date": "2026-10-25",
+    "reason": "Owner requested removal of posts from a closed external account, including associated images and links.",
+    "postsRemoved": 10,
+    "imagesRemoved": 34
+  }
 }

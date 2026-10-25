@@ -13,12 +13,10 @@ const posts = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(true),
     imported: z.boolean().default(false),
-    sources: z.array(z.object({ name: z.enum(['Brunch', 'Velog']), url: z.url() }).refine(source => {
+    sources: z.array(z.object({ name: z.enum(['Brunch']), url: z.url() }).refine(source => {
       const url = new URL(source.url);
       if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash) return false;
-      return source.name === 'Brunch'
-        ? url.origin === 'https://brunch.co.kr' && /^\/@ukai\/\d+\/?$/.test(url.pathname)
-        : url.origin === 'https://velog.io' && url.pathname.startsWith('/@ukng1024/');
+      return url.origin === 'https://brunch.co.kr' && /^\/@ukai\/\d+\/?$/.test(url.pathname);
     }, { message: 'Original sources must be HTTPS articles on the approved author accounts.' })).default([]),
     archiveNote: z.string().optional(),
   }),
