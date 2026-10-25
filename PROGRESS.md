@@ -54,5 +54,6 @@ No private source documents or inferred employment claims included.
 ## Content removal · 2026-10-25
 - [x] Remove 10 imported posts from the owner's closed external account and their 34 images at the owner's request.
 - [x] Keep all 11 Brunch posts and 70 Brunch images unchanged, including three unused republication assets.
+- [x] Remove Brunch /3 and /16 and the four /3 images at the owner's request; 9 Brunch posts and 66 images remain.
 - [x] Restrict source metadata and site links to Brunch; remove the closed account's profile references.
 - [x] Reconcile the retained source manifest and migration documentation; imported-post counts exclude newly authored posts and draft templates.
